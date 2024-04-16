@@ -1,0 +1,33 @@
+In Java, static methods cannot be overridden in the same way as instance methods. When a subclass declares a static method with the same signature as a static method in its superclass, it is not considered an override. Instead, it is simply hiding the superclass's static method.
+
+Here's an example to illustrate this:
+
+java
+Copy code
+class Parent {
+    static void staticMethod() {
+        System.out.println("Static method in Parent class");
+    }
+}
+
+class Child extends Parent {
+    static void staticMethod() {
+        System.out.println("Static method in Child class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent.staticMethod(); // Calls Parent class static method
+        Child.staticMethod();  // Calls Child class static method
+    }
+}
+Output:
+
+sql
+Copy code
+Static method in Parent class
+Static method in Child class
+As you can see, when you call staticMethod on the Child class, it does not override the method in the Parent class. The behavior is determined at compile time based on the reference type.
+
+In summary, while static methods in Java can be hidden or "shadowed" in subclasses, they are not overridden in the polymorphic sense that instance methods are. The method that gets invoked is based on the reference type, not the actual object type

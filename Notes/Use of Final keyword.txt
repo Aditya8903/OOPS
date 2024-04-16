@@ -1,0 +1,69 @@
+In Java, the final keyword is used to define constants, make variables, methods, or classes unmodifiable, and ensure that a method cannot be overridden or a class cannot be subclassed. Here are the main uses of the final keyword:
+
+Final Variables:
+When a variable is declared as final, its value cannot be changed after initialization. This is often used to define constants.
+
+java
+Copy code
+class Example {
+    final int CONSTANT_VALUE = 10;
+
+    void modifyConstant() {
+        // Error: Cannot assign a value to a final variable
+        // CONSTANT_VALUE = 20;
+    }
+}
+Final Methods:
+When a method is declared as final in a class, it cannot be overridden by any subclass. This is useful when you want to enforce that a particular method's implementation should not be changed in derived classes.
+
+java
+Copy code
+class Parent {
+    final void finalMethod() {
+        System.out.println("Final method in Parent class");
+    }
+}
+
+class Child extends Parent {
+    // Error: Cannot override the final method from Parent
+    // void finalMethod() {
+    //     System.out.println("Trying to override final method");
+    // }
+}
+Final Classes:
+When a class is declared as final, it cannot be subclassed. This is useful when you want to prevent further extension of a class.
+
+java
+Copy code
+final class FinalClass {
+    // Class implementation
+}
+
+// Error: Cannot inherit from final class
+// class AnotherClass extends FinalClass {
+//     // ...
+// }
+Final Parameters:
+When a method parameter is declared as final, it ensures that the parameter cannot be modified within the method.
+
+java
+Copy code
+class Example {
+    void processData(final int value) {
+        // Error: Cannot assign a value to final variable 'value'
+        // value = value + 1;
+        System.out.println("Processed value: " + value);
+    }
+}
+Finalize Method (Deprecated):
+The finalize method is called by the garbage collector before an object is reclaimed. However, it is generally discouraged to rely on finalize, and better alternatives like using try-with-resources or implementing AutoCloseable are recommended.
+
+java
+Copy code
+class Example {
+    // Deprecated: Avoid relying on finalize
+    protected void finalize() {
+        System.out.println("Finalize method called");
+    }
+}
+It's important to note that using final has different implications depending on whether it is applied to a variable, method, or class. It provides benefits such as increased code robustness, optimization opportunities, and design constraints.

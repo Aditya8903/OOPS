@@ -1,0 +1,53 @@
+/***************************************************IMPORTANT********************************************************************/
+
+/*In Java, a non-static inner class (like your Student class) needs an instance of the outer class (Lec1 in this case) to be created. 
+To fix this issue, you should either make the inner class Student static or 
+create an instance of the outer class before creating an instance of the inner class.
+
+Here's the modified code making the inner class Student static:
+
+
+class Lec1 {
+    public static void main(String[] args) {
+        // Create an instance of the static inner class Student
+        Student st = new Student();
+
+        // Set the name attribute of the Student object to "Aditya"
+        st.name = "Aditya";
+
+        // Print the name attribute of the Student object
+        System.out.println(st.name);
+    }
+
+    // Static inner class Student
+    static class Student {
+        int roll;
+        int marks;
+        String name;
+    }
+}
+Alternatively, you can keep the inner class as non-static and 
+create an instance of the outer class before creating an instance of the inner class:
+
+class Lec1 {
+    public static void main(String[] args) {
+        // Create an instance of the outer class Lec1
+        Lec1 lec1Instance = new Lec1();
+
+        // Create an instance of the inner class Student using the outer class instance
+        Lec1.Student st = lec1Instance.new Student();
+
+        // Set the name attribute of the Student object to "Aditya"
+        st.name = "Aditya";
+
+        // Print the name attribute of the Student object
+        System.out.println(st.name);
+    }
+
+    // Non-static inner class Student
+    class Student {
+        int roll;
+        int marks;
+        String name;
+    }
+} */

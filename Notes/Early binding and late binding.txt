@@ -1,0 +1,60 @@
+In Java, binding refers to the process of connecting a method call to the method body. There are two types of binding: early binding (or static binding) and late binding (or dynamic binding). Let's explore each with code examples:
+
+Early Binding (Static Binding):
+Early binding, also known as static binding, occurs at compile time. The decision about which method to call is made by the compiler based on the reference type. Here's an example of early binding:
+
+java
+Copy code
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+
+    void wagTail() {
+        System.out.println("Dog wags its tail");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Dog();  // Upcasting
+        animal.sound();  // Calls Dog's overridden method at compile time
+        // animal.wagTail(); // Compilation error: wagTail() is not a method in Animal class
+    }
+}
+In this example, the sound() method is called on an object of type Animal even though the actual object is of type Dog. The decision about which sound() method to call is made at compile time based on the reference type (Animal). If you uncomment the animal.wagTail() line, it will result in a compilation error because the compiler only recognizes methods available in the reference type (Animal). This is a characteristic of early binding in Java
+
+/****************************************************************************************************************************************/
+
+Late Binding (Dynamic Binding):
+Late binding occurs at runtime. The decision about which method to call is made based on the actual type of the object. This is also known as runtime polymorphism or method overriding.
+
+java
+Copy code
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Dog();  // Upcasting
+        animal.sound();  // Calls Dog's overridden method at runtime
+    }
+}
+In this example, the sound() method call is determined at runtime, and it calls the overridden method in the Dog class.
+
+In summary, early binding happens at compile time, and the method to be called is determined by the reference type. Late binding happens at runtime, and the method to be called is determined by the actual type of the object. Late binding is a key feature of polymorphism in Java.

@@ -1,0 +1,98 @@
+In Java, the super keyword is used in the context of inheritance to refer to the immediate parent class or to call the methods of the parent class. Here are the main uses of the super keyword:
+
+Accessing Parent Class Members:
+You can use super to access the members (fields or methods) of the immediate parent class. This is helpful when a child class has overridden a method or shadowed a field, and you want to access the parent class's version.
+
+java
+Copy code
+class Parent {
+    int x = 10;
+
+    void display() {
+        System.out.println("Parent class display");
+    }
+}
+
+class Child extends Parent {
+    int x = 20;
+
+    void display() {
+        System.out.println("Child class display");
+        System.out.println("Child class x: " + x);
+        System.out.println("Parent class x: " + super.x);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.display();
+    }
+}
+Output:
+
+kotlin
+Copy code
+Child class display
+Child class x: 20
+Parent class x: 10
+Calling Parent Class Constructor:
+You can use super to call the constructor of the immediate parent class. This is useful when you want to perform some additional initialization in the child class constructor while still invoking the parent class constructor.
+
+java
+Copy code
+class Parent {
+    Parent() {
+        System.out.println("Parent class constructor");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        super(); // Calling the parent class constructor
+        System.out.println("Child class constructor");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child child = new Child();
+    }
+}
+Output:
+
+kotlin
+Copy code
+Parent class constructor
+Child class constructor
+Calling Parent Class Method:
+You can use super to call the overridden method of the parent class from the child class. This is useful when you want to extend the behavior of the parent class method in the child class.
+
+java
+Copy code
+class Parent {
+    void display() {
+        System.out.println("Parent class display");
+    }
+}
+
+class Child extends Parent {
+    void display() {
+        super.display(); // Calling the parent class method
+        System.out.println("Child class display");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.display();
+    }
+}
+Output:
+
+kotlin
+Copy code
+Parent class display
+Child class display
+These are the primary uses of the super keyword in Java, helping to maintain the relationship between parent and child classes in an inheritance hierarchy
